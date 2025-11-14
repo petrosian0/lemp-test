@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechVision - IT Rešenja</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0e27;
+            --secondary: #ffffff;
+            --accent: #00d9ff;
+            --neutral-dark: #1a1f3a;
+            --neutral-light: #e5e5e5;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--neutral-light);
+            background-color: var(--primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: var(--neutral-dark);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--neutral-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-secondary {
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: var(--neutral-light);
+            border: 1px solid var(--neutral-light);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-primary {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, transparent 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--neutral-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            background-color: var(--neutral-dark);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 217, 255, 0.15);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 217, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .service-card p {
+            color: var(--neutral-light);
+            font-size: 0.95rem;
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 4rem 2rem;
+            background-color: var(--neutral-dark);
+            text-align: center;
+        }
+
+        .clients h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .client-logo {
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .client-logo:hover {
+            border-color: var(--accent);
+            background-color: rgba(0, 217, 255, 0.1);
+        }
+
+        .client-logo p {
+            color: var(--neutral-light);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem;
+            background-color: var(--primary);
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+            text-align: center;
+            color: var(--neutral-light);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">TechVision</div>
+        <ul class="nav-links">
+            <li><a href="#services">Usluge</a></li>
+            <li><a href="#clients">Klijenti</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <button class="btn-secondary">Prijava</button>
+            <button class="btn-primary">Počni</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Moderno IT rešenje za tvoj biznis</h1>
+        <p>Pružamo najnovije tehnologije i ekspertizu da transformišemo vašu kompaniju i ubrzamo digitalni rast.</p>
+        <div class="hero-buttons">
+            <button class="btn-primary">Zakaži konsultaciju</button>
+            <button class="btn-secondary">Saznaj više</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Naše usluge</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Web razvoj</h3>
+                <p>Kreiramo moderne web aplikacije sa najnovijom tehnologijom i najboljim performansama.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">☁️</div>
+                <h3>Cloud rešenja</h3>
+                <p>Pružamo skalabilna i bezbedna cloud rešenja za sve veličine poslovanja.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>Cybersecurity</h3>
+                <p>Štitimo vašu infrastrukturu od sigurnosnih pretnji i napada.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Data analitika</h3>
+                <p>Transformujemo podatke u akcije sa napojem AI i machine learning.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Mobilne aplikacije</h3>
+                <p>Razvijamo intuitivne mobilne aplikacije za iOS i Android.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Podrška i održavanje</h3>
+                <p>24/7 tehnička podrška i održavanje za vašu miru.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients" id="clients">
+        <h2>Klijenti koji nam veruju</h2>
+        <div class="clients-grid">
+            <div class="client-logo">
+                <p>Google</p>
+            </div>
+            <div class="client-logo">
+                <p>Microsoft</p>
+            </div>
+            <div class="client-logo">
+                <p>Amazon</p>
+            </div>
+            <div class="client-logo">
+                <p>Facebook</p>
+            </div>
+            <div class="client-logo">
+                <p>Apple</p>
+            </div>
+            <div class="client-logo">
+                <p>Netflix</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2025 TechVision. Sva prava zadržana. | Email: info@techvision.rs | Telefon: +381 11 123 4567</p>
+    </footer>
+</body>
+</html>
